@@ -2,7 +2,7 @@ import csv
 import random
 from time import sleep
 
-sleepVal = 0.5
+sleepVal = 0
 
 
 class Format:
@@ -83,7 +83,7 @@ class Match:
             sleep(sleepVal)
             print(". ", flush=True, end='')
 
-            for drive in range(1):
+            for drive in range(2):
                 self.team1.score += self.simulateDrive()
                 self.team2.score += self.simulateDrive()
             self.updateScoreboard()
