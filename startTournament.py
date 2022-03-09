@@ -2,6 +2,8 @@ import csv
 import random
 from time import sleep
 
+sleepVal = 0.5
+
 
 class Format:
     GREEN = ''
@@ -47,7 +49,6 @@ class Match:
         print(Format.BOLD + "Overtime round begins!" + Format.END)
 
         # add dramatic effect
-        sleepVal = 0.5
         sleep(sleepVal)
         print(".", flush=True, end='')
         sleep(sleepVal)
@@ -71,7 +72,6 @@ class Match:
 
             print(f"Qtr {qtr + 1} ", end='')
             # add dramatic effect
-            sleepVal = 0.5
             sleep(sleepVal)
             print(".", flush=True, end='')
             sleep(sleepVal)
@@ -168,7 +168,7 @@ def main():
         tourney.startRound()
         i += 1
 
-    print(Format.BOLD + f"\nYour new team is: The {tourney.winner}!" + Format.END)
+    print(Format.BOLD + f"\nYour new team is the {tourney.winner}!" + Format.END)
 
 
 if __name__ == '__main__':
