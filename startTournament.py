@@ -110,7 +110,7 @@ class Match:
 
 
 class Tournament:
-    def __init__(self):
+    def __init__(self, block1=None, block2=None):
         self.teams = []
         self.availableTeams = []
         self.matches = []
@@ -120,7 +120,13 @@ class Tournament:
         with open('teams.csv', newline='') as file:
             rows = csv.reader(file, delimiter=',')
             for row in rows:
-                self.teams.append(Team(row[0], row[1]))
+                if block1 is None and block2 is None:
+                    self.teams.append(Team(row[0], row[1]))
+                elif block1 is not None:
+                    if row[1].lower() != block1.lower():
+                        if block2 is not None:
+                            if row[1].lower() != block2.lower():
+                                self.teams.append(Team(row[0], row[1]))
             self.availableTeams = self.teams.copy()
 
     def getRandomTeam(self):
@@ -154,8 +160,8 @@ class Tournament:
             self.setWinner(winner)
 
 
-def main():
-    tourney = Tournament()
+def main(block1=None, block2=None):
+    tourney = Tournament(block1, block2)
     i = 1
     while not tourney.isOver:
         tourney.generateMatches()
@@ -182,4 +188,6 @@ if __name__ == '__main__':
             Format.UNDERLINE = '\033[4m'
             Format.END = '\033[0m'
 
-    main()
+    block1 = input("\nEnter blocks (team name without city, ex: seahawks)\nFirst block : ")
+    block2 = input("Enter second team to block: ")
+    main(block1, block2)
