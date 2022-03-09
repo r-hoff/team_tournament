@@ -148,8 +148,7 @@ class Tournament:
             print(Format.RED + f"The {loser} have been eliminated.\n" + Format.END)
             self.availableTeams.append(winner)
             i += 1
-            if len(self.availableTeams) != 1:
-                input("Press enter to begin the next match\n")
+            input("Press enter to continue\n")
         if len(self.availableTeams) == 1:
             self.isOver = True
             self.setWinner(winner)
