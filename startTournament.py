@@ -178,6 +178,12 @@ def main(block1=None, block2=None):
 
 
 if __name__ == '__main__':
+
+    teams = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys",
+             "Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Raiders","Chargers",
+             "Rams","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Eagles","Steelers",
+             "49ers","Seahawks","Buccaneers","Titans","Commanders"]
+
     import sys
     if len(sys.argv) > 1:
         mode = sys.argv[1]
@@ -188,6 +194,21 @@ if __name__ == '__main__':
             Format.UNDERLINE = '\033[4m'
             Format.END = '\033[0m'
 
-    block1 = input("\nEnter blocks (team name without city, ex: seahawks)\nFirst block : ")
-    block2 = input("Enter second team to block: ")
+    block1 = None
+    block2 = None
+
+    block = input("Block two teams (y/n)? ")
+    if block == "y":
+        print("\nEnter blocks (team name without city, ex: seahawks)")
+        while block1 is None:
+            team = input("First block: ")
+            if team.title() not in teams:
+                team = input("Team not found, try again: ")
+            block1 = team
+        while block2 is None:
+            team = input("Second block: ")
+            if team.title() not in teams:
+                team = input("Team not found, try again: ")
+            block2 = team
+
     main(block1, block2)
